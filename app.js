@@ -7,13 +7,23 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.appendChild(buttonDiv);
 
     let squares = document.createElement('div');
-    squares.className = 'squares';
+    squares.className = 'squareGroup';
     document.body.appendChild(squares)
+    let clickCount = 1;
 
     sqrButton.addEventListener("click", function() {
         let square = document.createElement('div');
+        let squareText = document.createTextNode(clickCount);
         squares.appendChild(square);
         square.className = 'blackSquare';
+        square.id = [clickCount++];
 
+        square.addEventListener('mouseover', function(e) {
+            square.appendChild(squareText);
+
+        })
     })
+
+    
+        
 })
