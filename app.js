@@ -11,19 +11,27 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.appendChild(squares)
     let clickCount = 1;
 
-    sqrButton.addEventListener("click", function() {
+    sqrButton.addEventListener("click", function () {
         let square = document.createElement('div');
         let squareText = document.createTextNode(clickCount);
         squares.appendChild(square);
         square.className = 'blackSquare';
         square.id = [clickCount++];
 
-        square.addEventListener('mouseover', function(e) {
+        square.addEventListener('mouseover', function () {
             square.appendChild(squareText);
-
         })
+
+        square.addEventListener('mouseout', function (){
+            square.removeChild(squareText);
+        })
+
+        square.addEventListener('click', changeColor);
     })
 
-    
-        
+    function changeColor(e) {
+        let colors = ['red', 'blue', 'green', 'purple', 'orange'];
+        let randomColor = colors[Math.floor(Math.random() * colors.length)];
+        e.target.style.backgroundColor = randomColor;
+    }
 })
