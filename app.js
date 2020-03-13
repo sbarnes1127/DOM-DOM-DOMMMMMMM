@@ -27,6 +27,27 @@ document.addEventListener("DOMContentLoaded", function () {
         })
 
         square.addEventListener('click', changeColor);
+
+        square.addEventListener('dblclick', function () {
+            let squareId = square.id;
+            let nextSquare = square.nextSibling;
+            let priorSquare = square.previousSibling;
+            
+    
+            if (squareId % 2 === 0) {
+                if (!nextSquare) {
+                    alert('There is no next square');
+                    return;
+                }
+                squares.removeChild(nextSquare);
+            } else {
+                if (!priorSquare) {
+                    alert('There is no previous square');
+                    return;
+                }
+                squares.removeChild(priorSquare);
+            }
+        })
     })
 
     function changeColor(e) {
